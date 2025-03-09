@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "social-app-django"
+version = "0.1.0"
+description = ""
+authors = ["inspiredCoconut <kricaldezfernandez@outlook.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poe.tasks.collectstatic]
+cmd  = "python app/manage.py collectstatic --clear --no-input"
+help = "Collect static files for production"
+
+[tool.poe.tasks.createsuperuser]
+cmd  = "python app/manage.py createsuperuser"
+help = "Create admin superuser"
+
+[tool.poe.tasks.makemigrations]
+cmd = "python app/manage.py makemigrations"
+help = "Start make migrations for database"
+
+[tool.poe.tasks.migrate]
+cmd  = "python app/manage.py migrate"
+help = "Migrate database"
+
+[tool.poe.tasks.migrate-debug]
+ref  = "migrate"
+env  = { DEBUG = "True" }
+help = "Migrate database including debug apps"
+
+[tool.poe.tasks.server-debug]
+cmd  = "python app/manage.py runserver"
+env  = { DEBUG = "True" }
+help = "Run server in debug mode"
+
+[tool.poe.tasks.superuser-dev]
+cmd = "python app/manage.py createsuperuser --noinput --username test"
+envfile = "./.env"
+help = "Create superuser for dev use"
+
+[tool.poe.tasks.install-req]
+help = "Install dependencies from requirements.txt"
+cmd = "cat requirements.txt | xargs poetry add"
+
+[tool.poe.tasks.export-req]
+help = "Export dependencies to requirements.txt"
+shell = "poetry export -f requirements.txt --without-hashes --output requirements.txt"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.1.7"
+poethepoet = "^0.33.0"
+django-cors-headers = "^4.7.0"
+poetry-plugin-export = "^1.9.0"
+dotenv = "^0.9.9"
+psycopg2-binary = "^2.9.10"
+gunicorn = "^23.0.0"
+uvicorn = "^0.34.0"
+channels = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
