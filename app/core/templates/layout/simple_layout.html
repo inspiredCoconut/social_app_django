@@ -1,0 +1,22 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block 'page_title' %}Simple YT App{% endblock 'page_title' %}
+
+{% block 'head' %}
+<link rel="stylesheet" href={% static "css/simple_layout.css" %} />
+{% endblock 'head' %}
+
+{% block 'content' %}
+  <header class="header row justify-content-center p-0 m-0">
+    <p class="h1 col-12 col-sm-6 d-flex justify-content-center mt-2">
+      Simple YT App
+    </p>
+  </header> 
+  <main>
+    {% block 'main_content' %}{% endblock 'main_content' %}
+  </main>
+{% endblock 'content' %}
+
+{% block 'footer' %}
+{% endblock 'footer' %}

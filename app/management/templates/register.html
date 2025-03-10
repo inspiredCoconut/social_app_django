@@ -1,0 +1,11 @@
+{% extends "base_auth_management.html" %}
+
+{% block 'management_content' %}
+    <h2 class="d-flex justify-content-center mb-4 mt-2">Register</h2>
+    <form class="col-10 d-flex flex-column justify-content-start align-items-center" class="form d-inline" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <p class="d-flex justify-content-center">Already have an account? <a class="mx-2" href="{% url 'login' %}">Login</a></p>
+{% endblock 'management_content' %}

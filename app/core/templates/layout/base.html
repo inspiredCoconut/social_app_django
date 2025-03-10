@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <title>{%block 'page_title'%}{%endblock 'page_title'%}</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Icons provided by Icons8" />
+    <link
+      rel="icon"
+      href="./assets/icons/icons8-javascript-48.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href={% static "vendor/bootstrap/css/bootstrap.min.css" %} />
+    <link rel="stylesheet" href={% static "vendor/bootstrap/css/bootstrap.min.css.map" %} />
+    <link rel="stylesheet" href={% static "vendor/bootstrap/css/bootstrap-utilities.min.css" %} />
+    <link rel="stylesheet" href={% static "vendor/bootstrap/css/bootstrap-utilities.min.css.map" %} />
+    {% block 'vendor_css'%}{% endblock 'vendor_css'%}
+    {% block 'head'%}{% endblock 'head'%}
+  </head>
+  <body>
+    {%block 'content'%}{%endblock 'content'%}
+    <footer class="container">
+      <script src={% static "vendor/jquery/jquery-3.7.1.min.js" %}></script>
+      <script src={% static "vendor/popper/popper.min.js" %}></script>
+      <script src={% static "vendor/bootstrap/js/bootstrap.min.js" %}></script>
+      {% block 'vendor_js'%}{% endblock 'vendor_js'%}
+      {%block 'footer' %}{%endblock 'footer'%}
+    </footer>
+  </body>
+</html>

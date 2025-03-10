@@ -1,0 +1,43 @@
+{% extends "layout/dashboard_layout.html" %}
+
+{% block 'page_title' %}Profile{% endblock 'page_title' %}
+
+{% block 'main_content' %}
+<style>
+    .section-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .profile-details {
+        width: 100%;
+        background-color: var(--bs-secondary-bg);
+    }
+</style>
+<section class="section-profile p-2">
+    {% include 'partials/back_button.html' %}
+    <div class="profile-details container p-3 rounded">
+        <div class="row justify-content-between">
+            <h2 class="col-sm-7 col-12">Welcome to your profile {{ user.username }}</h2>
+            <div class="col-sm-5 col-12 row justify-content-end">
+                <p class="col-6 btn btn-fit-content">ID: {{ user.id }}</p>
+                <p class="col-6 btn btn-fit-content">Status: Active</p>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <p class="col-6">Email: {{ user.email }}</p>
+            <p class="col-6">Created at: {{ user.date_joined }}</p>
+        </div>
+        <div class="row justify-content-between">
+            <p class="col-6">First name: {{ user.first_name }}</p>
+            <p class="col-6">Last name: {{ user.last_name }}</p>
+        </div>
+        <div class="actions">
+            <a class="btn btn-link" href="{% url 'update_profile' pk=user.id %}">
+                {% include 'common/icon_pencil.html'%} Edit
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock 'main_content' %}

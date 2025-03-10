@@ -1,0 +1,56 @@
+{% load path_tags %}
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static "icons/home.svg" %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Home
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center w-100">
+        <li class="nav-item">
+          <a
+            class="nav-link {%get_active_path_by_url_name 'list_post' request %}"
+            aria-current="page"
+            href="{%url 'list_post'%}"
+            >Posts</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link {%get_active_path_by_url_name 'settings' request %}"
+          aria-current="page"
+          href="{%url 'settings'%}"
+          >Settings</a
+        >
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link {%get_active_path_by_url_name 'profile' request %}"
+          aria-current="page"
+          href="{%url 'profile'%}"
+          >Profile</a
+        >
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <button class="btn btn-danger">Logout</button>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+            <button class="btn btn-primary">Login</button>
+          </a>
+        </li>
+        {% endif %}   
+      </div>
+    </div>
+  </div>
+</nav>

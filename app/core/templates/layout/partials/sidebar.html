@@ -1,0 +1,15 @@
+{% load static %}
+<aside class="sidebar">
+    <div class="profile">
+        <img src="{% static 'path/to/user-icon.png' %}" alt="User Icon" class="user-icon">
+        <p class="username">{{ user.username }}</p>
+    </div>
+    <nav class="nav-buttons">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'settings' %}">Settings</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</aside>
